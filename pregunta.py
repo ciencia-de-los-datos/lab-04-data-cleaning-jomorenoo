@@ -21,14 +21,15 @@ def clean_data():
     # limpio caracteres no deseados
     df = df.apply(lambda x: x.str.replace("$", ""))
     df = df.apply(lambda x: x.str.replace(",", ""))
-    df = df.apply(lambda x: x.str.replace("_", " "))
+    df = df.apply(lambda x: x.str.replace("_", "-"))
+    df = df.apply(lambda x: x.str.replace("-", " "))
     df = df.apply(lambda x: x.str.lower())
 
     # convierto el monto del credito a float
     df.monto_del_credito = df.monto_del_credito.astype(float)
 
     # convierto fecha a formano año-mes-dia
-    df.fecha_de_beneficio = pd.to_datatime(
+    df.fecha_de_beneficio = pd.to_datetime(
         df["fecha_de_beneficio"], dayfirst=True, format="mixed"
     )
 
