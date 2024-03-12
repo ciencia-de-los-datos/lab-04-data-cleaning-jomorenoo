@@ -21,7 +21,8 @@ def clean_data():
     # limpio caracteres no deseados
     df = df.apply(lambda x: x.str.replace("$", ""))
     df = df.apply(lambda x: x.str.replace(",", ""))
-    df = df.apply(lambda x: x.str.replace("_", " "))
+    df = df.apply(lambda x: x.str.replace("_", "-"))
+    df = df.apply(lambda x: x.str.replace("-", " "))
     df = df.apply(lambda x: x.str.lower())
 
     # convierto el monto del credito a float
