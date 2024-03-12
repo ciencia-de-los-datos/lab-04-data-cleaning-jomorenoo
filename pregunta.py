@@ -12,7 +12,7 @@ import pandas as pd
 
 def clean_data():
 
-    df = pd.read_csv("solicitudes_credito.csv", sep=";")
+    df = pd.read_csv("solicitudes_credito.csv", sep=";", index_col=0)
     df.dropna(inplace=True)
 
     # convierto todas las columnas a cadenas para manipular
